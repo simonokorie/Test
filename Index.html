@@ -1,391 +1,468 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPMONEY - Sign In</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-59mflmEHdfG3+iNat6Jg0HZPgYcAhZ7q0VO+q50sfkQDMBpoaSJfjJU2HuH5aBeMZyTwfKB54G8hratLP3Jsow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gloria Trends</title>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<style>
+  :root{
+    --gold1:#e8b923;
+    --gold2:#f5960a;
+    --navy:#0b0f2b;
+    --navy2:#10153a;
+    --red:#d0342c;
+  }
 
-        html, body {
-            width: 100%;
-            min-height: 100vh;
-        }
+  *{
+    box-sizing:border-box;
+  }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #0d1b3e 0%, #16305f 55%, #1e4bb8 100%);
-            padding: 24px;
-        }
+  body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    color:#222;
+  }
 
-        .card {
-            width: 100%;
-            max-width: 400px;
-            background: blue;
-            border: white;
-            border-radius: 16px;
-            padding: clamp(24px, 5vw, 40px);
-            color: #fff;
-            
-        }
+  a{
+    color:inherit;
+    text-decoration:none;
+  }
 
-        .title {
-            text-align: center;
-            margin-bottom: 22px;
-        }
+  .container{
+    max-width:1140px;
+    margin:0 auto;
+    padding:0 1rem;
+  }
 
-        .title .icon {
-            width: 46px;
-            height: 46px;
-            border: 1.5px solid #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 10px;
-            font-size: 18px;
-        }
+  .brand{
+    font-family:'Times new roman';
+  }
 
-        .title h1 {
-            font-size: clamp(20px, 5vw, 26px);
-            letter-spacing: 1px;
-        }
+  #menuToggle{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+  }
 
-        .title .bank-tag {
-            font-size: 12px;
-            opacity: 0.85;
-            letter-spacing: 1px;
-            margin-bottom: 14px;
-        }
+  .topbar{
+    background:linear-gradient(90deg,var(--gold1),var(--gold2));
+    padding:.5rem 1rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
 
-        .title h2 {
-            font-size: clamp(18px, 4.5vw, 22px);
-            margin-top: 4px;
-        }
+  .topbar label{
+    cursor:pointer;
+    color:#fff;
+    font-size:1.4rem;
+  }
 
-        .title .subtitle {
-            font-size: 13px;
-            opacity: 0.85;
-            margin-top: 2px;
-        }
+  .icons a{
+    color:#fff;
+    margin-left:1rem;
+    position:relative;
+  }
 
-        form {
-            display: flex;
-            flex-direction: column;
-        }
+  .badge{
+    position:absolute;
+    top:-6px;
+    right:-10px;
+    background:var(--red);
+    color:#fff;
+    font-size:.6rem;
+    border-radius:50%;
+    padding:2px 5px;
+  }
 
-        label {
-            font-size: 13px;
-            margin-bottom: 6px;
-            margin-top: 14px;
-        }
+  .promo{
+    background:var(--navy);
+    text-align:center;
+    padding:.6rem 0;
+  }
 
-        label:first-of-type {
-            margin-top: 0;
-        }
+  .promo a{
+    color:#c8e07a;
+    font-size:.85rem;
+    margin:0 1rem;
+  }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 12px 14px;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            background: #fff;
-            color: #222;
-        }
+  .overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.4);
+    opacity:0;
+    visibility:hidden;
+    transition:.25s;
+    z-index:10;
+  }
 
-        input::placeholder {
-            color: #888;
-        }
+  #menu{
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:min(85vw,380px);
+    background:#faf3e2;
+    transform:translateX(-100%);
+    transition:.3s;
+    z-index:11;
+    overflow-y:auto;
+  }
 
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="password"]:focus {
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
-        }
+  #menuToggle:checked .overlay{
+    opacity:1;
+    visibility:visible;
+  }
 
-        /* ---- CSS-only password show/hide (checkbox hack) ---- */
-        .password-wrapper {
-            position: relative;
-        }
+  #menuToggle:checked #menu{
+    transform:translateX(0);
+  }
 
-        .toggle-checkbox {
-            display: none;
-        }
+  .menu-head{
+    background:#e5e5e5;
+    padding:1rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
 
-        .pw-hidden,
-        .pw-visible {
-            width: 100%;
-            padding: 12px 42px 12px 14px;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            background: #fff;
-            color: #222;
-        }
+  .menu-head label{
+    color:var(--red);
+    font-size:1.4rem;
+    font-weight:700;
+    cursor:pointer;
+  }
 
-        .pw-visible {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
+  #menu a{
+    display:block;
+    margin:0 1.25rem 1rem;
+    font-size:.95rem;
+  }
 
-        .toggle-checkbox:checked ~ .pw-hidden {
-            display: none;
-        }
+  #menu input{
+    width:calc(100% - 2.5rem);
+    margin:1.25rem;
+    padding:.5rem;
+    border:none;
+    background:#eef4fb;
+  }
 
-        .toggle-checkbox:checked ~ .pw-visible {
-            display: block;
-        }
+  .hero{
+    background:linear-gradient(180deg,rgba(232,185,35,.55),rgba(245,150,10,.75)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&q=80') center/cover fixed;
+    padding:5rem 1rem 6rem;
+    text-align:center;
+  }
 
-        .toggle-password {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #888;
-            display: flex;
-            align-items: center;
-        }
+  .hero h1{
+    font-size:2.75rem;
+    margin:0 0 .5rem;
+  }
 
-        .toggle-password:hover {
-            color: #444;
-        }
+  .hero h2{
+    font-weight:800;
+    font-size:2.4rem;
+    color:#fff;
+    text-shadow:0 2px 8px rgba(0,0,0,.25);
+    margin:0 0 .5rem;
+  }
 
-        .toggle-password svg {
-            width: 18px;
-            height: 18px;
-        }
+  .hero p{
+    font-style:italic;
+    color:#fff;
+    opacity:.9;
+  }
 
-        /* ---- end password toggle ---- */
+  .hero button{
+    background:var(--navy);
+    color:#c8e07a;
+    font-weight:700;
+    padding:.65rem 1.75rem;
+    border:none;
+    margin-top:.5rem;
+    cursor:pointer;
+  }
 
-        .options-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 8px;
-            margin: 16px 0 20px;
-            font-size: 13px;
-        }
+  h3.title{
+    text-align:center;
+    margin:2.5rem 0 1.5rem;
+  }
 
-        .options-row label {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin: 0;
-            cursor: pointer;
-        }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1.5rem;
+    margin-bottom:3rem;
+  }
 
-        .options-row a {
-            color: #cfe0ff;
-            text-decoration: none;
-        }
+  @media (max-width:768px){
+    .grid{ grid-template-columns:1fr;
+    };
+  }
 
-        .options-row a:hover {
-            text-decoration: underline;
-        }
+  .card{
+    border:1px solid #eee;
+    height:420px;
+    display:flex;
+    flex-direction:column;
+    background:#fff;
+    transition:.2s;
+  }
 
-        .signin-btn {
-            width: 100%;
-            padding: 13px;
-            background: #14213d;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.2s ease, transform 0.1s ease;
-        }
+  .card:hover{
+    box-shadow:0 10px 24px rgba(0,0,0,.08);
+    transform:translateY(-3px);
+  }
 
-        .signin-btn:hover {
-            opacity: 0.9;
-        }
+  .card .img{
+    flex:0 0 70%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:1rem;
+  }
 
-        .signin-btn:active {
-            transform: scale(0.98);
-        }
+  .card img{
+    max-height:100%;
+    max-width:100%;
+    object-fit:contain;
+  }
 
-        .divider {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            font-size: 12px;
-            opacity: 0.85;
-            margin: 20px 0 14px;
-        }
+  .card .info{
+    flex:0 0 30%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    border-top:1px solid #f0f0f0;
+    text-align:center;
+  }
 
-        .divider::before,
-        .divider::after {
-            content: "";
-            flex: 1;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.35);
-        }
+  .card .price{
+    color:var(--red);
+    font-weight:700;
+    font-size:.9rem;
+    margin:.2rem 0 .5rem;
+  }
 
-        .divider span {
-            padding: 0 10px;
-        }
+  .card .row{
+    display:flex;
+    justify-content:space-between;
+    padding:0 1rem;
+    font-size:.85rem;
+  }
 
-        .social-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+  .card .buy{
+    color:var(--red);
+    font-weight:700;
+  }
 
-        .social-btn {
-            flex: 1 1 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            padding: 10px 8px;
-            border: none;
-            border-radius: 8px;
-            background: #fff;
-            color: #333;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.2s ease, transform 0.1s ease;
-            white-space: nowrap;
-        }
+  footer{
+    background:var(--navy2);
+    color:#cfd3e6;
+    padding:3rem 0 1.5rem;
+  }
 
-        .social-btn:hover {
-            background:black;
-        }
+  footer h3{
+    text-align:center;
+    color:#fff;
+    margin-bottom:2rem;
+  }
 
-        .social-btn:active {
-            transform: scale(0.97);
-        }
+  footer h6{
+    color:#c8e07a;
+    margin:0 0 .75rem;
+  }
 
-        .social-btn.google i { color: #DB4437; }
-        .social-btn.facebook i { color: #1877F2; }
-        .social-btn.twitter i { color: #000000; }
+  footer a{
+    display:block;
+    font-size:.9rem;
+    margin-bottom:.5rem;
+  }
 
-        .register-text {
-            text-align: center;
-            font-size: 13px;
-            margin-top: 20px;
-            opacity: 0.9;
-        }
+  .fgrid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:2rem;
+  }
 
-        .register-text a {
-            color: #fff;
-            font-weight: 600;
-            text-decoration: underline;
-        }
+  @media (max-width:768px){
+    .fgrid{ grid-template-columns:1fr 1fr;
+    };
+  }
 
-        /* ---- responsive breakpoints ---- */
-        @media (max-width: 480px) {
-            .card {
-                padding: 22px 18px;
-                border-radius: 12px;
-            }
+  .subscribe{
+    display:flex;
+    margin-top:.5rem;
+  }
 
-            .social-buttons {
-                flex-direction: column;
-            }
+  .subscribe input{
+    flex:1;
+    border:none;
+    padding:.5rem;
+  }
 
-            .social-btn {
-                flex: 1 1 auto;
-            }
-        }
+  .subscribe button{
+    background:var(--gold2);
+    border:none;
+    padding:.5rem 1rem;
+    font-weight:700;
+    cursor:pointer;
+  }
 
-        @media (min-width: 481px) and (max-width: 768px) {
-            .card {
-                max-width: 420px;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .card {
-                max-width: 440px;
-            }
-        }
-    </style>
+  .copyright{
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.1);
+    margin-top:2rem;
+    padding-top:1rem;
+    font-size:.85rem;
+  }
+</style>
 </head>
 <body>
 
+<input type="checkbox" id="menuToggle">
+<div class="topbar">
+  <label for="menuToggle">&#9776;</label>
+  <div class="icons">
+    <a href="#">Account</a>
+    <a href="#cart">Cart<span class="badge">145</span></a>
+    <a href="#help">Help</a>
+  </div>
+</div>
+<nav class="promo">
+  <a href="#bestsellers">Best Sellers</a><a href="#discounts">Discount sales</a><a href="#trending">Trending</a>
+</nav>
+
+<label class="overlay" for="menuToggle"></label>
+<div id="menu">
+  <div class="menu-head"><strong class="brand">Gloria Trends</strong><label for="menuToggle">&times;</label></div>
+  <input type="search" placeholder="Search">
+  <a href="#">FASHION</a><a href="#">ELECTRONICS</a><a href="#">MOBILE PHONES AND TABLETS</a>
+  <a href="#">OFFICE EQUIPMENT</a><a href="#">JEWELRIES</a><a href="#">BEAUTY AND SKIN CARE</a>
+</div>
+
+<header class="hero">
+  <h1 class="brand">Gloria Trends</h1>
+  <h2>GET STARTED<br>WITH OUR BEST DEALS</h2>
+  <p>Your favorite shopping Experience</p>
+  <button>GO SHOPPING</button>
+</header>
+
+<main class="container">
+  <h3 class="title" id="bestsellers">MEN AND WOMEN FASHION COLLECTION</h3>
+  <div class="grid">
     <div class="card">
-        <div class="title">
-            <div class="icon"><i class="ri-building-fill"></i></div>
-            <h1>UPMONEY</h1>
-            <p class="bank-tag">MICRO FINANCE BANK</p>
-            <h2>Welcome Back</h2>
-            <p class="subtitle">Sign into your account</p>
-        </div>
-
-        <form action="#" method="POST">
-            <label for="identifier">Email or Username</label>
-            <input type="text" id="identifier" name="identifier" placeholder="Email or Username">
-
-            <label for="password">Password</label>
-            <div class="password-wrapper">
-                <input type="checkbox" id="togglePassword" class="toggle-checkbox" autocomplete="off">
-
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    class="pw-hidden"
-                    placeholder="Password"
-                >
-
-                <input
-                    type="text"
-                    class="pw-visible"
-                    placeholder="Password"
-                    tabindex="-1"
-                >
-
-                <label for="togglePassword" class="toggle-password" aria-label="Toggle password visibility">
-                    <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                </label>
-            </div>
-
-            <div class="options-row">
-                <label><input type="checkbox" name="remember"> Remember me</label>
-                <a href="#">Forgot Password?</a>
-            </div>
-
-            <button type="submit" class="signin-btn">Sign in</button>
-
-            <div class="divider"><span>login with</span></div>
-
-            <div class="social-buttons">
-                <button type="button" class="social-btn google">
-                    <i class="fa-brands fa-google"></i> Google
-                </button>
-                <button type="button" class="social-btn facebook">
-                    <i class="fa-brands fa-facebook-f"></i> Facebook
-                </button>
-                <button type="button" class="social-btn twitter">
-                    <i class="fa-brands fa-x-twitter"></i> Twitter
-                </button>
-            </div>
-
-            <p class="register-text">Don't have an account? <a href="signup.html">Register now!</a></p>
-        </form>
+      <div class="img"><img src="Shirt.jpeg" alt="Yellow t-shirt"></div>
+      <div class="info"><strong>UNISEX T-SHIRT</strong>
+        <div class="price">₦7,000</div>
+        <div class="row">
+          <a href="#" class="buy">BUY NOW</a>
+          <a href="#">See More</a></div></div>
     </div>
+    <div class="card">
+      <div class="img"><img src="Unisex t-shirt.jpeg" alt="Green shirt"></div>
+      <div class="info"><strong>UNISEX SHIRT</strong>
+        <div class="price">₦8,000</div>
+        <div class="row">
+          <a href="#" class="buy">BUY NOW</a>
+          <a href="#">See More</a></div></div>
+    </div>
+    <div class="card">
+      <div class="img"><img src="Polka dress.jpeg" alt="Red dress"></div>
+      <div class="info"><strong>POLKA DOT DRESS</strong>
+        <div class="price">₦70,000</div>
+        <div class="row">
+          <a href="#" class="buy">BUY NOW</a>
+          <a href="#">See More</a></div></div>
+    </div>
+  </div>
+
+  <h3 class="title" id="trending">ELECTRONICS</h3>
+  <div class="grid">
+    <div class="card">
+      <div class="img"><img src="Laptop.jpeg" alt="Laptop"></div>
+      <div class="info"><strong>HP ELITEBOOK 635</strong>
+        <div class="price">₦250,000</div>
+        <div class="row">
+          <a href="#" class="buy">BUY NOW</a>
+          <a href="#">See More</a></div></div>
+    </div>
+    <div class="card">
+      <div class="img"><img src="Iphone.jpeg" alt="iPhone"></div>
+      <div class="info"><strong>APPLE IPHONE 15</strong>
+        <div class="price">₦800,000</div>
+        <div class="row">
+          <a href="#" class="buy">BUY NOW</a>
+          <a href="#">See More</a></div></div>
+    </div>
+    <div class="card">
+      <div class="img"><img src="Gaming Pc.avif" alt="Gaming PC"></div>
+      <div class="info"><strong>GAMING PC SETUP</strong>
+        <div class="price">₦700,000</div>
+      <div class="row">
+        <a href="#" class="buy">BUY NOW</a>
+        <a href="#">See More</a></div></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <h3 class="brand">Gloria Trends</h3>
+    <div class="fgrid">
+      <div><h6>Quick Links</h6>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+      </div>
+
+      <div><h6>Products</h6>
+        <a href="#">Best Deals</a>
+        <a href="#">Trendings</a>
+        <a href="#">Discount Sales</a>
+        <a href="#">Pay-Small-Small</a>
+      </div>
+
+      <div><h6>Categories</h6>
+        <a href="#">Fashion</a>
+        <a href="#">Electronics</a>
+        <a href="#">Phones And Tablets</a>
+        <a href="#">Office Equipment</a>
+      </div>
+
+      <div><h6>Partners</h6>
+        <a href="#">Reseller Deals</a>
+        <a href="#">Careers</a>
+        <a href="#">Deliveries</a>
+        <a href="#">Pick Up Stations</a></div>
+    </div>
+
+    <div class="fgrid" style="grid-template-columns:1fr 1fr; margin-top:2rem;">
+      <div>
+        <h6>Contact</h6>
+        <a href="tel:0800887876">0800887876</a>
+        <a href="mailto:hello@gloriatrends.com">hello@gloriatrends.com</a>
+        <div style="margin-top:.5rem;">
+          <a href="#" style="display:inline;margin-right:.75rem;">Facebook</a>
+          <a href="#" style="display:inline;margin-right:.75rem;">X</a>
+          <a href="#" style="display:inline;margin-right:.75rem;">Instagram</a>
+          <a href="#" style="display:inline;">LinkedIn</a></div>
+      </div>
+      <div>
+        <h6>Subscribe</h6>
+        <form class="subscribe"><input type="email" placeholder="Enter your email" required><button type="button">Subscribe</button></form>
+      </div>
+    </div>
+    <div class="copyright">copyright &copy; 2024 Gloria Trends</div>
+  </div>
+</footer>
 
 </body>
 </html>
